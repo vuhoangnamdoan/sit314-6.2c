@@ -1,0 +1,90 @@
+{
+  "info": {
+    "name": "SIT314 6.2C Module 4 - Weather Service",
+    "description": "CRUD + latest reading + weather lookup for the local weather web-service. Run the API first (npm start), then send these requests in order. baseUrl defaults to http://localhost:3000.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "readingId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Create reading (POST /temps)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Save the new reading's id so later requests can use it.",
+              "const body = pm.response.json();",
+              "if (body && body.data && body.data._id) {",
+              "  pm.collectionVariables.set('readingId', body.data._id);",
+              "}",
+              "pm.test('created (201)', () => pm.response.code === 201);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{baseUrl}}/temps", "host": ["{{baseUrl}}"], "path": ["temps"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"Melbourne, AU\",\n  \"temperature\": 23.5,\n  \"sensorId\": \"sensor_a\"\n}"
+        }
+      }
+    },
+    {
+      "name": "2. Read all (GET /temps)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/temps", "host": ["{{baseUrl}}"], "path": ["temps"] }
+      }
+    },
+    {
+      "name": "3. Read latest (GET /temps/latest)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/temps/latest", "host": ["{{baseUrl}}"], "path": ["temps", "latest"] }
+      }
+    },
+    {
+      "name": "4. Read one (GET /temps/:id)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/temps/{{readingId}}", "host": ["{{baseUrl}}"], "path": ["temps", "{{readingId}}"] }
+      }
+    },
+    {
+      "name": "5. Update (PUT /temps/:id)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{baseUrl}}/temps/{{readingId}}", "host": ["{{baseUrl}}"], "path": ["temps", "{{readingId}}"] },
+        "body": { "mode": "raw", "raw": "{\n  \"temperature\": 30.0\n}" }
+      }
+    },
+    {
+      "name": "6. Delete (DELETE /temps/:id)",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "{{baseUrl}}/temps/{{readingId}}", "host": ["{{baseUrl}}"], "path": ["temps", "{{readingId}}"] }
+      }
+    },
+    {
+      "name": "7. Weather by location (GET /weather)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/weather?location=Melbourne",
+          "host": ["{{baseUrl}}"],
+          "path": ["weather"],
+          "query": [{ "key": "location", "value": "Melbourne" }]
+        }
+      }
+    }
+  ]
+}

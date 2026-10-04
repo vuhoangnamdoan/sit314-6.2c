@@ -1,0 +1,13 @@
+[Unit]
+Description=SIT314 Weather API
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/weather-service
+ExecStart=/usr/bin/node api.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

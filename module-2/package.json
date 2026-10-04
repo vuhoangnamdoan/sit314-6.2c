@@ -1,0 +1,20 @@
+{
+  "name": "forest-fire-monitor",
+  "version": "1.0.0",
+  "description": "SIT314 6.2C Module 2 Above-and-Beyond: forest fire monitoring and alarm prototype (Node.js + MQTT + Node-RED)",
+  "main": "sensors/forestSensor.js",
+  "scripts": {
+    "test": "node test/detection.test.js",
+    "sensor": "node sensors/forestSensor.js",
+    "homeowners": "node receivers/homeowners.js",
+    "fireservice": "node receivers/fireservice.js",
+    "news": "node receivers/news.js",
+    "social": "node receivers/social.js"
+  },
+  "author": "Vu Hoang Nam Doan (224021565)",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "mqtt": "^5.15.2"
+  }
+}

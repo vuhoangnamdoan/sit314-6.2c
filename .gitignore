@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Secrets - never commit database credentials
+.env
+.env.*
+!.env.example
+
+# Local MongoDB data (if any)
+mongo-data/
+
+# OS / editor
+.DS_Store
+*.swp
+
+# Office temp files
+~$*
+
+# Build / logs
+out/
+*.log

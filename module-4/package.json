@@ -1,0 +1,19 @@
+{
+  "name": "weather-service",
+  "version": "1.0.0",
+  "description": "SIT314 6.2C Module 4 Above-and-Beyond: local weather web-service (Node.js + Express + MongoDB Atlas)",
+  "main": "api.js",
+  "scripts": {
+    "start": "node api.js",
+    "client": "node client.js"
+  },
+  "author": "Vu Hoang Nam Doan (224021565)",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.6.0",
+    "weather-js": "^2.0.0"
+  }
+}

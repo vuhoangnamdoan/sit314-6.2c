@@ -1,0 +1,19 @@
+{
+  "name": "weather-warning-scalability",
+  "version": "1.0.0",
+  "description": "SIT314 6.2C Module 1 Above-and-Beyond: scalable weather warning service (extends the Week 2 technical task)",
+  "main": "weatherService.js",
+  "scripts": {
+    "test": "node test/dataModel.test.js",
+    "service": "node weatherService.js",
+    "sensor": "node sensorNode.js",
+    "client": "node warningClient.js",
+    "loadtest": "node loadTest.js"
+  },
+  "author": "Vu Hoang Nam Doan (224021565)",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "mqtt": "^5.15.2"
+  }
+}
